@@ -47,3 +47,24 @@ resources:
           notebook_task:
             notebook_path: ./formula1-project/03-silver/01.Transform Circuits Data
             source: WORKSPACE
+        - task_key: 02_ingest_races_file
+          run_if: ALL_SUCCESS
+          job_cluster_key: Job_cluster
+          timeout_seconds: 0
+          email_notifications: {}
+          webhook_notifications: {}
+          disabled: false
+          notebook_task:
+            notebook_path: ./formula1-project/02-bronze/02.Ingest Races File
+            source: WORKSPACE
+        - task_key: 02_transform_races_data
+          depends_on:
+            - task_key: 02_ingest_races_file
+          run_if: ALL_SUCCESS
+          job_cluster_key: Job_cluster
+          timeout_seconds: 0
+          email_notifications: {}
+          disabled: false
+          notebook_task:
+            notebook_path: ./formula1-project/03-silver/02.Transform Races Data
+            source: WORKSPACE
