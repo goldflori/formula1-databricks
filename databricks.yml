@@ -1,0 +1,12 @@
+bundle:
+  name: formula1-databricks
+
+include:
+  - resources/*.yml
+
+targets:
+  dev:
+    default: true
+    mode: development
+    workspace:
+      host: https://adb-7405606137188839.19.azuredatabricks.net
